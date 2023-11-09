@@ -91,10 +91,10 @@ export default defineNuxtModule<ModuleOptions>({
     })
         // Azure Oauth
     runtimeConfig.oauth.azure = defu(runtimeConfig.oauth.azure, {
-      clientId: '',
-      clientSecret: '',
-      redirectUri: '',
-      tenantId: ''
+      clientId: process.env.NUXT_OAUTH_AZURE_AD_CLIENT_ID,
+      clientSecret: process.env.NUXT_OAUTH_AZURE_AD_CLIENT_SECRET,
+      redirectUri: process.env.NUXT_OAUTH_AZURE_AD_REDIRECT_URI,
+      tenantId: process.env.NUXT_OAUTH_AZURE_AD_TENANT_ID
     })
   }
 })

@@ -39,7 +39,7 @@ export interface OAuthAzureConfig {
    */
   tokenURL?: string
 
-  tenant?: string
+  tenantId?: string
 
 }
 
@@ -59,7 +59,7 @@ export function azureEventHandler ({ config, onSuccess, onError }: OAuthConfig) 
     }) as OAuthAzureConfig
     const { code } = getQuery(event)
 
-    if (!config.tenant) {
+    if (!config.tenantId) {
       const error = createError({
         statusCode: 500,
         message: 'Missing NUXT_OAUTH_AZURE_AD_TENANT_ID env variables.'
@@ -78,7 +78,7 @@ export function azureEventHandler ({ config, onSuccess, onError }: OAuthConfig) 
     }
 
     const redirectUrl = getRequestURL(event).href
-    const authorizationURL = `https://login.microsoftonline.com/${config.tenantId}/oauth2/v2.0/authorize`,
+    const authorizationURL = `https://login.microsoftonline.com/${config.tenantId}/oauth2/v2.0/authorize`
     const tokenURL = `https://login.microsoftonline.com/${config.tenantId}/oauth2/v2.0/token`
     if (!code) {
       config.scope = config.scope || []
