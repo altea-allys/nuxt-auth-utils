@@ -89,5 +89,12 @@ export default defineNuxtModule<ModuleOptions>({
       clientId: '',
       clientSecret: ''
     })
+        // Azure Oauth
+    runtimeConfig.oauth.azure = defu(runtimeConfig.oauth.azure, {
+      clientId: '',
+      clientSecret: '',
+      redirectUri: '',
+      tenantId: ''
+    })
   }
 })
