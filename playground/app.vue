@@ -53,6 +53,16 @@ const { loggedIn, session, clear } = useUserSession()
       >
         Login with Twitch
       </UButton>
+      <UButton
+        v-if="!loggedIn || !session.user.azure"
+        to="/auth/azure"
+        icon="i-simple-icons-microsoft"
+        external
+        color="gray"
+        size="xs"
+      >
+        Login with Azure
+      </UButton>
     </template>
   </UHeader>
   <UMain>
